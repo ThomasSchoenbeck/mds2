@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+html {
+  box-sizing: border-box;
+}
+
+*, ::before, ::after {
+  box-sizing: inherit;
+}
+
+body {
+  // background-color: #bfd255; // Old browsers
+  // @include filter-gradient(#bfd255, #9ecb2d, horizontal); // IE6-9 fallback on horizontal gradient
+  // @include background-image(linear-gradient(left top, #bfd255 0%,#8eb92a 23%,#72aa00 63%,#9ecb2d 100%));
+
+  background: #bfd255; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #bfd255 0%, #8eb92a 23%, #72aa00 63%, #9ecb2d 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #bfd255 0%,#8eb92a 23%,#72aa00 63%,#9ecb2d 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #bfd255 0%,#8eb92a 23%,#72aa00 63%,#9ecb2d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
