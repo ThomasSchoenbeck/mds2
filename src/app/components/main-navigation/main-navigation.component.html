@@ -1,11 +1,36 @@
 <nav class="navbar">
-  <div>
+  <div class="links">
     <ul>
+      <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
       <li><a routerLink="/overview" routerLinkActive="active">Overview</a></li>
       <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
       <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
     </ul>
+  </div> <!-- links -->
 
+  <div class="login-box" id="bs-example-navbar-collapse-1">
+    <ul *ngIf="!isLoggedIn && isLoggedIn !== undefined" class="nav navbar-nav navbar-right">
+      <li><a routerLink="/login">login</a></li>
+    </ul>
+  </div>
+
+  <div *ngIf="isLoggedIn && isLoggedIn !== undefined" class="user-box">
+    <ul class="user-box-content" (click)="openUserMenu()">
+      <li class="user-name">
+        <div>
+          {{userFirstName}} {{userLastName}}
+        </div>
+      </li>
+      <li class="user-pic">
+        <div class="img"></div>
+        <!--<img src="">-->
+      </li>
+    </ul>
+    <ul class="userMenu" *ngIf="userMenuOpened">
+      <li><a (click)="navToUserProfile()">Profile</a></li>
+      <li><a (click)="navToUserSettings()">Settings</a></li>
+      <li><a (click)="logout()">Logout</a></li>
+    </ul>
   </div>
 
 </nav>

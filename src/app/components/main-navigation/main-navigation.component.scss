@@ -9,17 +9,99 @@
 
   ul {
     list-style-type: none;
+    // overflow: hidden;
+    margin: 0;
+  }
+
+  .links {
+    height: 75px;
+    display: inline-block;
+    // text-align: center;
+
+    ul {
+
+      height: 75px;
+
+      li {
+        display: inline-block !important;
+        margin: 0 10px;
+        height: 75px;
+        line-height: 75px;
+        vertical-align: middle !important;
+      }
+
+      // &:after {
+      //   clear:both;
+      // }
+
+    }
+  }
+
+  .login-box {
+    display: inline-block;
+  }
+
+  .user-box {
+    display: block;
+    float: right;
+    height: 75px;
+    margin-right: 25px;
+    position: relative;
 
 
-    li {
-      float: left;
-      margin: 0 10px;
-      padding: 10px;
+    .user-box-content {
+      display: block;
+      background: #FFF;
+      cursor: pointer;
+      text-align: center;
+      // clear: both;
+      height: 74px;
+      
+
+      li {
+        display: inline-block;
+        line-height: 74px;
+        float: left;
+      }
+
+
+      .user-name {
+        padding: 0 5px;
+        background: indianred;
+      }
+
+      .user-pic {
+        padding: 6px 0;
+        
+        .img {
+          border-radius: 25px;
+          background: red;
+          vertical-align: middle;
+          height: 60px;
+          width: 60px;
+        }
+      }
     }
 
-    &:after {
-      clear:both;
+    ul.userMenu {
+      position: absolute;
+      border: 1px solid darkslategray;
+      background: #909090;
+      padding: 5px;
+      right:0;
+
+      li {
+        margin: 5px;
+
+        a {
+          cursor: pointer;
+          display: block;
+          padding: 5px 10px;
+          background: #FFF;
+        }
+      }
     }
 
   }
+
 }

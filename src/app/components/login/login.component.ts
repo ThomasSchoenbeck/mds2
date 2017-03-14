@@ -1,7 +1,8 @@
 import { Component }  from '@angular/core';
 import { Router }     from "@angular/router";
 
-import { LoginService } from "../../services/login.service";
+import { AuthService }    from '../../services/auth.service';
+import { LoginService }   from "../../services/login.service";
 
 @Component({
   selector: 'login',
@@ -11,7 +12,7 @@ import { LoginService } from "../../services/login.service";
 export class LoginComponent {
   public error: any;
 
-  constructor(public loginService: LoginService, private router: Router) {}
+  constructor(public loginService: LoginService, public authService: AuthService, private router: Router) {}
 
   // loginWithGoogle() {
   //   this.loginService.loginWithGoogle().then((data) => {
@@ -24,7 +25,12 @@ export class LoginComponent {
   loginWithEmail(event, email, password){
     event.preventDefault();
     this.loginService.loginWithEmail(email, password).then(() => {
-      this.router.navigate(['']);
+      // Get the redirect URL from our auth service
+      // If no redirect has been set, use the default
+      let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '';
+      // Redirect the user
+      // this.router.navigate(['']);
+      this.router.navigate([redirect]);
     })
       .catch((error: any) => {
         if (error) {
@@ -33,5 +39,23 @@ export class LoginComponent {
         }
       });
   }
+
+  // constructor(public authService: AuthService, public router: Router) { }
+
+  // login() {
+  //   this.authService.login().subscribe(() => {
+  //     if (this.authService.isLoggedIn) {
+  //       // Get the redirect URL from our auth service
+  //       // If no redirect has been set, use the default
+  //       let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/crisis-center/admin';
+  //       // Redirect the user
+  //       this.router.navigate([redirect]);
+  //     }
+  //   });
+  // }
+
+  // logout() {
+  //   this.authService.logout();
+  // }
 
 }

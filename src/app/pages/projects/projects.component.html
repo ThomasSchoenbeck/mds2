@@ -1,3 +1,27 @@
-<p>
-  projects works!
-</p>
+<h1>Projects</h1>
+
+<!--https://medium.com/@semeano/angular2-typescript-angularfire2-b1b967ba30ba#.3x81ic6dw-->
+
+<div *ngFor="let project of projects">
+  <div>{{project.name}} <span>{{project.owner}}</span></div>
+</div>
+
+
+
+
+<!--<form [formGroup]="projectForm" (ngSubmit)="createProject()" #projectForm="ngForm">-->
+<form [formGroup]="projectForm" (ngSubmit)="createProject()">
+  <label>
+    Name:
+    <input type="text" formControlName="name">
+  </label>
+  <label>
+    Budget:
+    <input type="number" formControlName="budget">
+  </label>
+  <label>
+    Owner:
+    <input type="text" formControlName="owner">
+  </label>
+  <button type="button" (click)="addProject($event); projectForm.reset()" class="btn btn-success">Submit</button>
+</form>

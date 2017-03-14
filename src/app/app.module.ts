@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+//http://learnangular2.com/forms/
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
@@ -14,22 +17,20 @@ import { MainNavigationComponent } from './components/main-navigation/main-navig
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 //pages
-import { RegisterComponent } from './pages/register/register.component';
-import { OverviewComponent } from './pages/overview/overview.component';
+import { OverviewComponent }  from './pages/overview/overview.component';
+import { ProfileComponent }   from './pages/profile/profile.component';
+import { ProjectsComponent }  from './pages/projects/projects.component';
+import { RegisterComponent }  from './pages/register/register.component';
 
 //services
+import { AuthGuard }    from './auth-guard';
+import { AuthService }  from './services/auth.service';
 import { LoginService } from './services/login.service';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { ProjectsComponent } from './pages/projects/projects.component';
+import { ProjectService } from './services/project.service';
 
-// Must export the config
-export const firebaseConfig = {
-  apiKey: 'AIzaSyDWzi1fhfsD2S7g1ts3vRoZBOZBPZ0mmWg',
-  authDomain: 'mds-2-1c873.firebaseapp.com',
-  databaseURL: 'https://mds-2-1c873.firebaseio.com/',
-  storageBucket: 'mds-2-1c873.appspot.com',
-  messagingSenderId: '967631975860'
-};
+// Must export or import the config
+import { firebaseConfig } from './firebase.config';
+import { HomeComponent } from './pages/home/home.component'
 
 @NgModule({
   declarations: [
@@ -40,16 +41,18 @@ export const firebaseConfig = {
     LoginComponent,
     OverviewComponent,
     ProfileComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
-  providers: [LoginService],
+  providers: [AuthGuard, AuthService, LoginService, ProjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

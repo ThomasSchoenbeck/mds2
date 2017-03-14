@@ -69,6 +69,7 @@ export class LoginService {
    * Logs out the current user
    */
   logout() {
+    console.log(`LoginService: logout()`);
     return this.af.auth.logout();
   }
 
